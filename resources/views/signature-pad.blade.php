@@ -13,6 +13,7 @@
         $isDownloadable = $isDownloadable();
         $downloadableFormats = $getDownloadableFormats();
         $downloadActionDropdownPlacement = $getDownloadActionDropdownPlacement() ?? 'bottom-start';
+        $canvasClasses = $getCanvasClasses();
         $isUndoable = $isUndoable();
         $isConfirmable = $isConfirmable();
         $loadStrategy = $getLoadStrategy();
@@ -51,13 +52,12 @@
             x-ref="canvas"
             wire:ignore
             @class([
-                'w-full h-36 rounded-lg border border-gray-300',
-                'dark:bg-gray-900 dark:border-white/10',
+                $canvasClasses ?? 'w-full h-36 rounded-lg border border-gray-300 dark:bg-gray-900 dark:border-white/10',
                 'opacity-75 bg-gray-50' => $isDisabled,
             ])
         ></canvas>
 
-        <div class="flex items-center justify-end mt-3 space-x-2">
+        <div class="flex items-center justify-start mt-3 space-x-2">
             @if ($isClearable)
                 {{ $clearAction }}
             @endif

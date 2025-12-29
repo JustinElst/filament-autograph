@@ -35,6 +35,8 @@ trait HasOptions
 
     protected string | Closure $loadStrategy = 'visible';
 
+    protected string | Closure | null $canvasClasses = null;
+
     protected DownloadableFormat | null $stateFormat = null;
 
     /**
@@ -185,6 +187,15 @@ trait HasOptions
     }
 
     /**
+     * Used to set the css classes for the canvas element.
+     */
+    public function canvasClasses(?string $canvasClasses): static
+    {
+        $this->canvasClasses = $canvasClasses;
+        return $this;
+    }
+
+    /**
      * Used to set the format e.g. (PNG, SVG) that will be passed back to the Filament state.
      */
     public function stateFormat(DownloadableFormat $downloadableFormat): static
@@ -257,6 +268,11 @@ trait HasOptions
     public function getLoadStrategy(): string
     {
         return $this->evaluate($this->loadStrategy);
+    }
+
+    public function getCanvasClasses(): ?string
+    {
+        return $this->evaluate($this->canvasClasses);
     }
 
     public function getStateFormat(): ?string
