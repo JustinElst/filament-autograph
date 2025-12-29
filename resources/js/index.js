@@ -15,6 +15,7 @@ export default function signaturePadFormComponent({
     penColor,
     penColorOnDark,
     state,
+    stateFormat,
     throttle,
     velocityFilterWeight,
 }) {
@@ -92,8 +93,8 @@ export default function signaturePadFormComponent({
             } = this.prepareToExport()
             this.signaturePad.fromData(exportedData)
 
-            this.previousState = this.state
-            this.state = this.signaturePad.toDataURL()
+            this.previousState = this.state;
+            this.state = this.signaturePad.toDataURL(stateFormat);
 
             if (confirmable) {
                 this.confirmed = true
