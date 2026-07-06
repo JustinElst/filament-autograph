@@ -26,7 +26,7 @@
     @endphp
 
     <div
-        x-load
+        x-load="visible || event (ax-modal-opened)"
         x-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('filament-autograph-alpine', 'saade/filament-autograph') }}"
         x-data="signaturePadFormComponent({
             backgroundColor: @js($getBackgroundColor()),
